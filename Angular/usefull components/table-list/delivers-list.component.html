@@ -1,0 +1,127 @@
+<button mat-raised-button routerLink="crear">Crear un nuevo Deliver</button>
+
+
+<div>
+  <form [formGroup]="formGroup" (ngSubmit)="consultarEspecifico($event)">
+
+
+    Buscador:
+
+    <mat-form-field style="padding-right: 30px; padding-left:20px; width: 300px">
+      <mat-label>Seleccione el método de búsqueda</mat-label>
+      <mat-select formControlName="metodo_busqueda">
+        <mat-option *ngFor="let metodo_busqueda of metodos_busqueda" [value]="metodo_busqueda.codigo">
+          {{metodo_busqueda.descripcion}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+
+    <mat-form-field style="padding-right: 30px; width: 300px">
+      <mat-label>Escriba el valor</mat-label>
+      <input placeholder="valor" formControlName="valor" matInput type="text">
+    </mat-form-field>
+
+    <button [disabled]="formGroup.invalid" mat-raised-button color="primary" type="submit">Buscar</button>
+
+
+  </form>
+
+</div>
+
+
+<div *ngIf="es_busqueda">
+  <button mat-stroked-button color="primary" (click)="consultarTodo()">Ver todos los pedidos</button>
+  <h1 *ngIf="!hay_datos">No hay ningun resultado que coincida con la busqueda</h1>
+</div>
+
+<table mat-table [dataSource]="delivers" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="actions" >
+   <th mat-header-cell *matHeaderCellDef> Acciones </th>
+   <td mat-cell *matCellDef="let deliver" class="actions">
+     <button mat-icon-button color="primary" (click)="navegarEditarDeliver(deliver)">
+       <mat-icon>edit</mat-icon>
+     </button>
+   </td>
+  </ng-container>
+
+  <ng-container matColumnDef="correo">
+   <th mat-header-cell *matHeaderCellDef> Correo </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.correo}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="user">
+   <th mat-header-cell *matHeaderCellDef> Usuario </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.user}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+   <th mat-header-cell *matHeaderCellDef> Nombre </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="telefono">
+   <th mat-header-cell *matHeaderCellDef> Telefono </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.telefono}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ultima_fecha_logeo">
+   <th mat-header-cell *matHeaderCellDef> Última fecha de logeo </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.ultima_fecha_logeo}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="habilitado">
+   <th mat-header-cell *matHeaderCellDef> Habilitado </th>
+   <td mat-cell *matCellDef="let deliver">
+     <div *ngIf="deliver.habilitado">
+       <input type="checkbox" (click)="toggleDeliverHabilitado(deliver)" checked>
+     </div>
+     <div *ngIf="!deliver.habilitado">
+       <input type="checkbox" (click)="toggleDeliverHabilitado(deliver)">
+     </div>
+   </td>
+  </ng-container>
+
+  <ng-container matColumnDef="calificacion_promedio">
+   <th mat-header-cell *matHeaderCellDef> Calificación promedio </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.calificacion_promedio}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ganancia_total">
+   <th mat-header-cell *matHeaderCellDef> Ganancia total </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.ganancia_total | currency}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ganancia_mes">
+   <th mat-header-cell *matHeaderCellDef> Ganancia del mes </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.ganancia_mes | currency}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecha_inicio_referencia">
+   <th mat-header-cell *matHeaderCellDef> Fecha de inicio de referencia del mes </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.fecha_inicio_referencia}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecha_fin_referencia">
+   <th mat-header-cell *matHeaderCellDef> Fecha de fin de referencia del mes </th>
+   <td mat-cell *matCellDef="let deliver"> {{deliver.fecha_fin_referencia}} </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<hr>
+
+<div *ngIf="!es_busqueda">
+  <button mat-stroked-button color="primary"
+          (click)="getMore()">Cargar más</button>
+  <h2 *ngIf="!hay_datos">No se encontraron más datos</h2>
+</div>
+
+<br><br><br>

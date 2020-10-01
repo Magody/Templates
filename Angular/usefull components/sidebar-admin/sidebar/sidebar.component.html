@@ -1,0 +1,64 @@
+<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        
+      <mat-nav-list>
+        <div class="profile-card">
+            <div class="header">
+                <h2>{{ user.username }}</h2>
+                <h4>
+                  {{ user.email }}
+                  <br>
+                  Administrador
+                </h4>
+            </div>
+            <img [src]="user.url_photo" alt="foto">
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <h2 matSubheader class="center-element">Cuadro de mando</h2>
+
+        <div class="menu">
+          <a mat-list-item 
+            routerLinkActive="submenu_active" 
+            routerLink="/admin/functions/list"
+            (click)="toggleMenuSelection(0)"
+            >
+            Funciones
+          </a>
+        </div>
+
+
+        <!--
+
+        <h2 matSubheader class="center-element">Herramientas</h2>
+
+        <div class="menu">
+          <a mat-list-item (click)="toggle('menu_monitor')" class="folding_button">
+              Monitor del sistema
+          </a>
+        </div>
+
+        <div *ngIf='buttons_menu_pressed.menu_monitor'>
+
+          <a mat-list-item routerLinkActive="submenu_active" routerLink="/panel/monitor/errores">
+              <mat-icon>bug_report</mat-icon>
+              Errores
+          </a>
+
+        </div>
+
+        -->
+
+
+      </mat-nav-list>
+
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<app-footer></app-footer>

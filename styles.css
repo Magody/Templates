@@ -1,0 +1,18 @@
+
+.center-element {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inline {
+  display: inline-block;
+}
+
+// Crea un espacio automático, como para un nav
+.spacer {
+  flex: 1 1 auto;
+}

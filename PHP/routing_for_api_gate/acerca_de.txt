@@ -1,0 +1,2 @@
+Permite evaluar problemas de seguridad en un mismo punto, al mismo tiempo que se reutiliza el código de manera brutal.
+Todas las peticiones a gate deben ser post indicando la ruta y el archivo asociado dentro de server_api

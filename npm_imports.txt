@@ -1,0 +1,6 @@
+Para encriptar con SHA256:
+npm install js-sha256
+Cookies:
+npm install ngx-cookie-service
+Charts para dashboard:
+npm i @swimlane/ngx-charts --save
