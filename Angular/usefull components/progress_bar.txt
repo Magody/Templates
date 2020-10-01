@@ -1,0 +1,12 @@
+Material:
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+Html:
+<div class="center-element">
+  <div *ngIf="show_progress">
+    <mat-progress-spinner
+        color="primary"
+        mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+</div>
