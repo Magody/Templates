@@ -1,0 +1,3 @@
+{{product.title | uppercase}}
+{{product.price | currency}}
+{{ product.description | slice:0:10}}

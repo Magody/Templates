@@ -1,4 +1,4 @@
-<button mat-raised-button routerLink="crear">Crear una nueva función </button>
+<button mat-raised-button (click)="navigateToCreate()">Crear una nueva función </button>
 
 <div>
   <form [formGroup]="formGroup" (ngSubmit)="searchData($event)">

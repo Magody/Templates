@@ -134,6 +134,76 @@ class Gesture {
         return $response;
 
     }
+	
+	public static function search($connection, $search_method, $search_value) {
+
+        $response = new Response(0, "iniciando get search", 0, [], null);
+
+
+        try {
+            $sql = "SELECT * FROM gesture WHERE ";
+
+            
+            if($search_method == 0){
+                $sql .= "id_function ";
+            }
+            else if($search_method == 1){
+                $sql .= "username_user ";
+            }
+            else if($search_method == 2){
+                $sql .= "name ";
+            }
+            $sql .= "LIKE '%$search_value%' limit 10";
+
+			
+
+            $stmt = $connection->prepare($sql);
+
+            if(!$stmt){
+                $response->id_message = 4;
+                $response->server_message = "Ha ocurrido un error";
+                $response->error  =  "Ocurrió un error al preparar la consulta sql: $sql. ";
+                return $response;
+            }
+
+
+            $success = $stmt->execute();
+
+            if($success){
+
+                $response->id_message = 1;
+                $response->server_message = "Se ha consultado correctamente";
+				
+				$data = [];
+				
+				$quantity = $stmt->rowCount();
+				
+				while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+					array_push($data, $row);
+                }
+				
+				
+				$response->data = $data;
+				$response->metadata = "".$quantity;
+				
+
+
+            }else{
+                $response->id_message = 4;  // 4 es error de servidor
+                $response->server_message  = "No se pudo crear";
+                $response->error = "Error al ejecutar el sql: $sql\n ";
+            }
+
+
+        } catch (Exception $e) {
+            $response->id_message = 4;  // 4 es error de servidor
+            $response->server_message  = "Error del servidor";
+            $response->error = $e->getMessage();
+        }
+
+        return $response;
+
+    }
 
     public function update($connection){
 

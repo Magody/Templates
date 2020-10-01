@@ -1,3 +1,4 @@
+
 import { ServerResponse } from "./../../../../core/models/server-response.model";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -33,6 +34,10 @@ export class FunctionsListComponent implements OnInit {
     {
       code: 1,
       description: "Buscar por nombre",
+    },
+    {
+      code: 2,
+      description: "Buscar por tipo (1, 2, 3)",
     },
   ];
 
@@ -82,17 +87,17 @@ export class FunctionsListComponent implements OnInit {
         console.log("fetchData: ", response);
 
 
-        if(response.body == undefined){
+        if(response.id_message == undefined){
           alert("Ha ocurrido un error de conexión")
         }else{
-          if (response.body.status == 1) {
+          if (response.data.length > 0) {
+            this.data_exists = true;
+          } else {
             this.data_exists = false;
             this.skip -= this.step;
-          } else {
-            this.data_exists = true;
           }
   
-          this.listData = this.listData.concat(response.body.data);
+          this.listData = this.listData.concat(response.data);
           this.dataSource = new MatTableDataSource<MyFunction>(this.listData);
         }
 
@@ -105,7 +110,7 @@ export class FunctionsListComponent implements OnInit {
     this.fetchData(this.skip, this.step);
   }
 
-  delete(object_to_delete: any) {
+  delete(object_to_delete: MyFunction) {
     console.log("Objeto a eliminar", object_to_delete);
 
     this.show_progress = true;
@@ -115,10 +120,10 @@ export class FunctionsListComponent implements OnInit {
         this.show_progress = false;
         console.log("Respuesta de eliminar", response)
 
-        if(response.body == undefined){
+        if(response.id_message == undefined){
           alert("Ha ocurrido un error de conexión")
         }else{
-          if(response.body.status == 1){
+          if(response.id_message == 1){
             for (let i = 0; i < this.listData.length; i++) {
               if(this.listData[i].id == object_to_delete.id){
                 this.listData.splice(i, 1);
@@ -128,7 +133,7 @@ export class FunctionsListComponent implements OnInit {
             }
             this.dataSource = new MatTableDataSource<MyFunction>(this.listData);
           }else{
-            alert(response.body.msg);
+            alert(response.server_message);
           }
         }
 
@@ -136,6 +141,10 @@ export class FunctionsListComponent implements OnInit {
 
          
        });
+  }
+  
+  navigateToCreate() {
+    this.router.navigate([this.root_dir + "/create"]);
   }
 
   navigateToUpdate(object_to_edit: any) {
@@ -158,11 +167,17 @@ export class FunctionsListComponent implements OnInit {
             this.show_progress = false;
             console.log("searchData: ", response);
 
-            if(response.body == undefined){
+            if(response.id_message == undefined){
               alert("Ha ocurrido un error de conexión")
             }else{
-              this.listData = response.body.data;
+			  if (response.data.length > 0) {
+                this.data_exists = true;
+              } else {
+                this.data_exists = false;
+              }
+              this.listData = response.data;
               this.is_search = true;
+              this.dataSource = new MatTableDataSource<MyFunction>(this.listData);
             }
             
 

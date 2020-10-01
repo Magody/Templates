@@ -1,0 +1,21 @@
+ALTER TABLE user ADD FULLTEXT INDEX `FullText` (`username` ASC, `full_name` ASC);
+
+// suele ir bien con nombre y descripción, no puede analizar lo anterior, si se quiere analizar lo anterior es mejor LIKE %val%
+
+SELECT * FROM user WHERE MATCH(username, full_name) AGAINST('user* -user_test' IN BOOLEAN MODE )
+
+// score
+SELECT *, MATCH(username, full_name) AGAINST('user*' IN BOOLEAN MODE ) as score FROM user 
+
+// al usar dos columnas, fuerza a que el match se haga en dos columnas. Puede ser mejor hacer una por una
+
+
+
+
+https://www.mysqltutorial.org/mysql-boolean-text-searches.aspx/
+
+MySQL does not automatically sort rows by relevance in descending order in Boolean full-text search.
+To perform Boolean queries, InnoDB tables require all columns of the MATCH expression has a FULLTEXT index. Notice that MyISAM tables do not require this, although the search is quite slow.
+MySQL does not support multiple Boolean operators on a search query on InnoDB tables e.g., ‘++mysql’. MySQL will return an error if you do so. However, MyISAM behaves differently. It ignores other operators and uses the operator that is closest to the search word, for example, ‘+-mysql’ will become ‘-mysql’.
+InnoDB full-text search does not support trailing plus (+) or minus (-) sign. It only supports leading plus or minus sign. MySQL will report an error if you search word is ‘mysql+’ or ‘mysql-‘. In addition, the following leading plus or minus with wildcard are invalid: +*, +-
+The 50% threshold means if a word appears in more than 50% of the rows, MySQL will ignore it in the search result.
