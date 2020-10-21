@@ -1,0 +1,14 @@
+
+Npm:
+- npm install js-sha256
+- npm install @angular/flex-layout
+
+Ng:
+- ng add @angular/material
+
+generate
+
+ng g m admin --routing
+ng g m account --routing
+ng g g admin
+

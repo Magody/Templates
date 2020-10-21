@@ -22,7 +22,7 @@ class Gesture {
 
     public function create($connection) {
 
-        $response = new Response(0, "iniciando creación de gesto", 0, [], null);
+        $response = new Response(0, "", 0, [], null);
 
 
         try {

@@ -1,0 +1,49 @@
+private $id;
+private $user_username;
+private $place_id;
+private $category_id;
+private $condition_id;
+private $status_id;
+private $type_id;
+private $title;
+private $i_offer;
+private $i_want;
+private $publication_datetime;
+private $url_reference;
+private $reference_value;
+
+public function __construct($id, $user_username, $place_id, $category_id, $condition_id, $status_id, $type_id, $title, $i_offer, $i_want, $publication_datetime, $url_reference, $reference_value){
+	$this->id = $id;
+	$this->user_username = $user_username;
+	$this->place_id = $place_id;
+	$this->category_id = $category_id;
+	$this->condition_id = $condition_id;
+	$this->status_id = $status_id;
+	$this->type_id = $type_id;
+	$this->title = $title;
+	$this->i_offer = $i_offer;
+	$this->i_want = $i_want;
+	$this->publication_datetime = $publication_datetime;
+	$this->url_reference = $url_reference;
+	$this->reference_value = $reference_value;
+}
+
+INSERT INTO item(user_username, place_id, category_id, condition_id, status_id, type_id, title, i_offer, i_want, publication_datetime, url_reference, reference_value) VALUES(:user_username, :place_id, :category_id, :condition_id, :status_id, :type_id, :title, :i_offer, :i_want, :publication_datetime, :url_reference, :reference_value)
+UPDATE item SET user_username=:user_username, place_id=:place_id, category_id=:category_id, condition_id=:condition_id, status_id=:status_id, type_id=:type_id, title=:title, i_offer=:i_offer, i_want=:i_want, publication_datetime=:publication_datetime, url_reference=:url_reference, reference_value=:reference_value WHERE id=:id
+
+$success = $stmt->execute(array(
+
+	":user_username" => $this->user_username,
+	":place_id" => $this->place_id,
+	":category_id" => $this->category_id,
+	":condition_id" => $this->condition_id,
+	":status_id" => $this->status_id,
+	":type_id" => $this->type_id,
+	":title" => $this->title,
+	":i_offer" => $this->i_offer,
+	":i_want" => $this->i_want,
+	":publication_datetime" => $this->publication_datetime,
+	":url_reference" => $this->url_reference,
+	":reference_value" => $this->reference_value
+	":id" => $this->id
+	));
