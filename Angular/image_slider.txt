@@ -1,0 +1,39 @@
+npm install ng-image-slider --save
+
+
+
+Usar en app module o el módulo correspondiente:
+
+import { NgImageSliderModule } from 'ng-image-slider';
+...
+imports: [
+	NgImageSliderModule,
+	...
+],
+
+
+
+En el HTML a usarse el slider:
+<div>
+    <ng-image-slider [images]="item.urls_imgs | urlsImagesToObjects"></ng-image-slider>
+
+</div>
+
+
+La transformación pasa urls en string a objetos:
+
+transform(urls: string[]): Array<Object> {
+
+    const imageObject: Array<Object> = [];
+
+    for(var url of urls){
+      imageObject.push({
+        image: url,
+        thumbImage: url,
+        alt: '',
+        title: ''
+      })
+    }
+
+    return imageObject;
+  }

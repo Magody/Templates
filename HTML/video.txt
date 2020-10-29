@@ -1,0 +1,11 @@
+
+
+
+  text-align: center; en el contenedor del video
+  
+div class="box-left">
+	<video width="96%" style="margin: 0 auto; position: relative;" controls>
+		<source src="../assets/handshake.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video> 
+</div>

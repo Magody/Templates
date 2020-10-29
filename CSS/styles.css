@@ -34,9 +34,15 @@
   }
 
 
+.horizontal-center {
+  text-align: center;
+  margin: 0 auto;
+}
 
 .box-container {
+  display: block;
   background-color: green;
+  width: 90%;
 }
 
 
