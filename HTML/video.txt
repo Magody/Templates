@@ -1,7 +1,4 @@
-
-
-
-  text-align: center; en el contenedor del video
+text-align: center; en el contenedor del video
   
 div class="box-left">
 	<video width="96%" style="margin: 0 auto; position: relative;" controls>
@@ -9,3 +6,4 @@ div class="box-left">
 		Your browser does not support the video tag.
 	</video> 
 </div>
+

@@ -14,10 +14,15 @@ imports: [
 
 
 En el HTML a usarse el slider:
-<div>
-    <ng-image-slider [images]="item.urls_imgs | urlsImagesToObjects"></ng-image-slider>
-
-</div>
+<ng-image-slider 
+            
+	[images]="item.urls_imgs | urlsImagesToObjects"
+	[imageSize]="{width: '100%', height: '150px'}"
+	[infinite]="false"
+	[autoSlide]="3"
+	[imagePopup]="false"
+	(imageClick)="viewImage($event)" 
+></ng-image-slider>
 
 
 La transformación pasa urls en string a objetos:
@@ -37,3 +42,9 @@ transform(urls: string[]): Array<Object> {
 
     return imageObject;
   }
+  
+  
+  
+  
+  
+  

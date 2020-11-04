@@ -1,0 +1,8 @@
+HTML:
+<div #container></div>
+
+TS:
+@ViewChild('container') container: ElementRef;
+
+uso -> let element = this.container.nativeElement;
+        const card = element.children[0];

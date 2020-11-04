@@ -1,0 +1,197 @@
+:root {
+  --font-size: 20px;
+  --color-background: white;
+  --color-primary: #649AAB;
+  --color-secundary: white;
+  --navbar-height: 3rem;
+  --navbar-mobile-height: 2rem;
+}
+
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: var(--font-size);
+  font-family: "Open Sans", helvetica;
+}
+
+body {
+  max-width: 100vw;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  max-width: 100vw;
+  
+}
+
+.content .main-content {
+  flex: 7;
+  background-color: cyan;
+}
+
+.content .aside-content {
+  flex: 3;
+  background-color: yellowgreen;
+  
+}
+
+.content .header-page {
+  display: flex;
+  align-items: center;
+  background-color: blue;
+  height: 60vh;
+  
+}
+
+
+
+.content .header-page .banner-brand{
+  flex: 7;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: yellow;
+}
+
+.content .header-page .banner-brand img{
+  height: 100%;
+  max-width: 100%;
+}
+
+.content .header-page .register-form{
+  margin: 1rem;
+  flex: 3;
+  background-color: green;
+  text-align: center;
+  max-height: 100%;
+}
+
+.content .header-page .form-title{
+  font-style: bold;
+  font-size: 1.5rem;
+  letter-spacing: .1rem;
+}
+
+.content .header-page .register-form form{
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .5rem 2rem;
+  max-height: 60vh;
+}
+
+.content .header-page .register-form form .container-input{
+  width: 100%;
+  background-color: cyan;
+}
+
+.content .header-page .register-form form .container-input input{
+  width: 100%;
+  
+}
+
+.content .header-page .register-form .form-submit{
+  display: flex;
+  align-items: center;
+  margin: .5rem 0;
+}
+
+.content .header-page .register-form .checkbox{
+  flex: 4;
+  display: flex;
+  margin-right: 1rem;
+}
+
+.content .header-page .register-form .checkbox .confirm-msg{
+  font-size: .5rem;
+}
+
+
+.content .header-page .register-form .button-submit{
+  flex: 1;
+  display: flex;
+}
+
+.content .header-page .register-form .button-submit input{
+  height: 2rem;
+  border-radius: 1rem;
+  
+}
+
+.body-page .carrousel-categories {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  background-color: black;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.body-page .carrousel-categories img{
+  width: 5rem;
+  height: 5rem;
+}
+
+.body-page .grid-publications {
+  display: grid;
+  grid-gap: 1rem 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: .2rem 2rem;
+  background-color: green;
+}
+
+.body-page .grid-publications .mock-publication {
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+
+@media screen and (max-width: 500px) {
+  .content .aside-content {
+    display: none;
+  }
+  
+  .content .header-page {
+    height: auto;
+    width: 100vw;
+  }
+  
+  .content .header-page .banner-brand{
+    padding: .4rem;
+  }
+  
+  .content .main-content .register-form{
+    display: none;
+  }
+  
+  .content .main-content .carrousel-categories {
+    
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    width: 100vw;
+    
+  }
+  
+  .content .main-content .carrousel-categories img {
+    
+  }
+  
+  .body-page .grid-publications {
+    grid-gap: 0rem 0rem;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0rem .2rem;
+    background-color: green;
+  }
+  
+  .body-page .grid-publications .mock-publication {
+    margin-bottom: .3rem;
+  }
+  
+}
