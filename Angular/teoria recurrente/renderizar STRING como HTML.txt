@@ -1,0 +1,12 @@
+Renderizar STRING como HTML [innerHtml]
+
+El texto puede tener todas las etiquetas html, se renderizarán como tal.
+
+<div class="description" [innerHTML]="(dictionary$ | async).home_copywritingbox_interest_description">
+        </div>
+		
+se pueden definir estilos en el string:
+
+home_copywritingbox_interest_description: "<div style='color: black;' class="bold"> Mi texto </div>"
+
+Lo más efectivo es agregarle clases

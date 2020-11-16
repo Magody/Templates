@@ -1,0 +1,11 @@
+el contenedor de una card detecta la animación
+
+Si solo se pone la card, entonces al poner el mouse afuera de esos límites la animacijón acaba, el contenedor de afuera le permite tener una holgura para el mouse
+
+Para que no haga "flicker" cuando el mouse esté en el borde
+
+transform-style: preserve-3d; para el translate Z y que se note
+perspective aumenta el efecto
+permite que el hijo del contenedor se muestre en 3D
+  
+  

@@ -1,0 +1,35 @@
+
+Se puede hacer una referencia con ID
+
+HTML:
+<div #container></div>
+
+TS:
+SOLO FUNCIONA CUANDO LAS VISTAS SE INICIALIZARON
+
+@ViewChild('someInput') someInput: ElementRef;
+ngAfterViewInit() {
+	this.someInput.nativeElement.value = 'Whale!';
+}
+
+Se puede acceder tranquilamente a sus hijos y cambiar sus estilos
+
+@ViewChild('container') container: ElementRef;
+
+uso -> let element = this.container.nativeElement;
+        const card = element.children[0];
+		card.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+
+
+O simplemente se puede pasar por parámetro en una función:
+
+
+HTML:
+<div #container></div>
+<button (click)="fun(container)"></button>
+
+TS:
+
+fun(element) {
+	...
+}

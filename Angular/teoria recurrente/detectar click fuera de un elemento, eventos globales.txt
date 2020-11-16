@@ -1,0 +1,24 @@
+Eventos globales (HOST)
+
+
+En el decorador de component se puede establecer un evento para detectar un click.
+
+Con inyección de dependencias se puede determinar si ese click global, ocurrio en el elemento actual o en otro componente
+
+@Component({
+  host: {
+  '(document:click)': 'onClick($event)',
+  },
+  ...
+})
+
+
+constructor(
+    private _eref: ElementRef
+  ) { }
+
+onClick(event) {
+    if (!this._eref.nativeElement.contains(event.target)){
+      this.show_login_form = false;
+    }
+  }

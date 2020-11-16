@@ -1,0 +1,25 @@
+
+
+Error: contenedor no abarca todo lo que podría:
+Solución: usar %
+
+        max-height: 100%;
+		
+en móviles le dice que se extienda todo el body si es posible, lo cual es mucho mejor que auto y 100vh que toman valores iguales
+
+
+Para videos desfasados del contenedor, los limita:
+
+video {
+	width: 100%;
+	max-height: 50vh;
+	margin: 0rem;
+}
+
+en este caso no importa el tamaño de la pantalla, el video solo se extenderá hasta el 50vh de la misma.
+
+Si no se usa ese limitador, el video se sale del contenedor.
+
+
+
+problemas con align vertical, solución cambiar max-heigh 60vh por heigh 60vh, el video se alineo

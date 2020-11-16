@@ -1,0 +1,26 @@
+Establece el flujo de la web, normalmente los divs se ponen uno debajo de otro.
+
+Static es la posición por defecto.
+
+Relative: le dice que coja la posición respecto a su posición NATURAL 
+
+Con esto se puede usar: top, left, bottom, right para darle una nueva posición al elemento, pero su posición original NO cambia, de modo que los siguientes elementos se ponen debajo de su posición (original del elemento desplazado)
+
+
+
+
+Es diferente de margin top, porque margin le da un espacio, no desplaza el elemento
+
+Absolute.- hace que se salte del flujo
+
+
+
+El div que estaba siguiente, ocupa su lugar.
+
+Se le puede especificar hasta cual se puede saltar el flujo.
+
+Si se le pone al padre “relative” se salta el flujo hasta el padre
+
+
+
+El div hijo toma como referencia al div padre al moverse.

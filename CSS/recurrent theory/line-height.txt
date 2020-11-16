@@ -1,0 +1,1 @@
+hay que cambiar el line heigh por el nuevo heigh del texto, para que no se peguen los renglones

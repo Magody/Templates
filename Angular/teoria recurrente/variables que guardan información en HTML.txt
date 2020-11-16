@@ -1,0 +1,12 @@
+
+al usar "#" Angular se puede comunicar con otras variables en RAM:
+
+
+
+<a class="nav-link flex-column"  routerLink="/faq" routerLinkActive="active-mobile"
+                #rla_faq="routerLinkActive"
+                >
+                <mat-icon *ngIf="!rla_faq.isActive" class="icon-inactive">help_outline</mat-icon>
+                <mat-icon *ngIf="rla_faq.isActive" class="icon-active">help_outline</mat-icon>
+                <div> {{ (dictionary$ | async).mobile_navbar_faq }} </div>
+            </a>

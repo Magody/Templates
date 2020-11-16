@@ -1,0 +1,12 @@
+circulo con color gradiente de fondo atras de otra imagen.
+
+La clase se agrega a un div vacío, para que tome forma debe tener algo dentro o una altura y ancho por defecto
+
+
+.rectangle {
+  width: 3rem;
+  height: 2rem;
+  background: linear-gradient(30deg, blue, green, red, yellow, green);
+  position: absolute;
+  z-index: 1;
+}

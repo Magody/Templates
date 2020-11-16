@@ -1,0 +1,15 @@
+Crea una imagen de fondo con los colores dicho y la dirección
+
+no funciona con color, background- color porque es una IMAGEN
+
+
+Sintaxis:
+background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
+
+
+Ejemplos:
+background-image: linear-gradient(to bottom right, red , blue);
+
+background-image: linear-gradient(180deg, red, blue);
+
+background-image: linear-gradient(to right, red , blue);

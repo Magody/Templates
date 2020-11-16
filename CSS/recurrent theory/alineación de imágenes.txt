@@ -1,0 +1,2 @@
+error: imagen tamaño en un scroll horizontal
+solución: es mejor modificar su altura en un scroll horizontal, el ancho automático

@@ -1,0 +1,11 @@
+Se importa en el html:
+
+   Step - 1 : Insert the link in your index.html page
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    Step - 2 : Use it In your css file (Component.css)
+
+* {
+  font-family: 'Open Sans', sans-serif;
+} 

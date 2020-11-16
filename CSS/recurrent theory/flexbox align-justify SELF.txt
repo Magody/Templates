@@ -1,0 +1,9 @@
+Self (justify-self, align-self)
+
+Dependiendo de la dirección del flex, justify-self o align-self toman ajustes diferentes en base a una dirección.
+
+Para modificar el SELF en la misma dirección principal se usa MARGIN no align/justify:
+
+margin-left: 0; margin-right: auto;
+
+En la dirección cross, se puede usar el self con normalidad

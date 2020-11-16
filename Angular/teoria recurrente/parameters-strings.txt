@@ -1,0 +1,1 @@
+En la carpeta assets se guarda un archivo que se exporta como enviroment.ts, y se lo usa desde adentro de la app. Claro, son visibles y son útiles para el idioma

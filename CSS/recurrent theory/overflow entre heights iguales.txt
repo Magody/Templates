@@ -1,0 +1,1 @@
+si una caja tiene como máxima altura la altura del contenedor padre y aun asi se expande: es caso de overflow.

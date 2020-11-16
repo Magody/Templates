@@ -1,0 +1,21 @@
+Debe tener una referencia de padre. Si se quiere que tenga la altura del texto que acompaña se lo incluye dentro de ese texto, caso contrario se le da un height fijo al padre (hay la opción de hacer relative > absolute, para que tome automáticamente la altura del padre sin un tamaño fijo
+
+.line-vertical {
+  width: 3px;
+  height: 100%;
+  background-color: red;
+}
+
+
+Ejemplo de uso:
+
+
+<div class="container">
+
+	<div> => display flex. Sin relative-absolutes
+		Text
+		<div class="line-vertical"> </div>
+	</div>
+
+
+</div>

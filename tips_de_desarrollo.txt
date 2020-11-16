@@ -1,0 +1,28 @@
+usar buscar y reemplazar, con errores a gran escala
+
+Crear estilos frecuentes en CSS, REUSABLES. Al diseñar procurar que todo quede listo con clases anteriores, sino, crear para el futuro.
+
+Medir tiempos de desarrollo y aprender bien/entrenar la velocidad de ciertos diseños que toman mucho tiempo
+
+revisar la consola de angular-web-etc, suele tener errores ocultos
+
+no combinar rem y vh en alturas a menos que no importe en el layout de viewport
+
+buscar soluciones simples usando lo existente, como rotar un contenedor solo con posiciones (posición relativa al mouse desde el centro) sin condicionales IFs resultó más corto y más fácil (escalable posiblemente)
+
+Una imagen 2D debajo de una 3D le da más profundidad (translate Z distintos, y z-index distintos)
+
+Tener una visión escalable de los idiomas ahorra hasta un 50%. Usar bien el tiempo de diseño para no regresar por errores.
+
+es mejor flex:2 proportions para el layout
+
+Al hacer LAYOUTS COLOREARLOS, No despintar nada hasta terminar el layout ENTERO, comentar al final, porque para pruebas de regresión puede ser necesario volver a pintar
+
+Anotar en lo que falta entrenar para dedicarle un tiempo luego.
+
+Usar una carpeta de módulos en Angular para hacerlo todo escalable, excepto por shared y core que van afuera.
+
+descargar assets antes de comenzar para testear más rápido
+
+Si algo no funciona como debe y se trata de estétitca: usar la técnica del ilusionismo, tener una copia con el cambio. el doble lift (en donde un elemento está oculto)
+

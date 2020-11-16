@@ -1,0 +1,61 @@
+
+PUBLICADOR:
+
+
+En un ...service.ts se crea una variable BehaviorSubject de un tipo de dato.
+
+private products: Product[] = [];
+private cart = new BehaviorSubject<Product[]>([]);
+
+
+Mediante un $, se denota como observable. De modo que se pueden suscribir otros a este dato
+
+
+cart$ = this.cart.asObservable();
+
+
+Al realizar un cambio se usa NEXT para avisar a todos los componentes suscritos
+
+constructor(){
+	this.cart.next([]);
+}
+
+addCart(product: Product) {
+	this.products = [...this.products, product];  // no se debe usar push por la mutabilidad
+	this.cart.next(this.products);  //le envía el cambio a cualquier componente suscrito
+
+}
+
+Es necesario hacer un NEXT inicial para que todo vaya en orden, desde el constructor del servicio.
+
+
+SUSCRIPTOR:
+
+Se crea un observable y mediante un pipe => map se recipe los valores cuando ocurre un cambio
+
+total$: Observable<number>;
+
+  
+constructor(
+private cartService: CartService
+) {
+this.total$ = this.cartService.cart$
+.pipe(
+  map(products => products.length)
+)
+}
+
+// import { map } from 'rxjs/operators';
+
+
+String interpolation del valor, leer el valor:
+
+
+  <a routerLink="/order" mat-raised-button [matBadge]="total$ | async" matBadgeColor="warn">
+                <mat-icon>shopping_cart</mat-icon> <!--En material.io se encuentran los nombres clave de los iconos-->
+                Carrito
+            </a>
+ 
+ DEBE ser usado almenos una vez con 1 async para que reciba mensajes de suscripción
+
+

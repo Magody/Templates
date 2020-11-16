@@ -1,0 +1,19 @@
+Se le asigna un provider:
+
+en core por ejemplo:
+
+providers: [
+	AsyncPipe
+]
+
+En TS se lo importa e inyecta como dependencia:
+
+...
+constructor(
+private asyncPipe: AsyncPipe
+) {}
+...
+
+Uso (transform):
+
+let value = this.asyncPipe.transform(this.dictionary$).home_ourservices_marketing_image_alt

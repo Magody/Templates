@@ -1,0 +1,67 @@
+
+Se define una animación con nombre para un elemento:
+
+.myclass {
+
+	animation: <name> <time (.3s)> <transition (ease-in-out)> <delay (.3s)> <repetitions) normal forwards;
+}
+
+normal forwards hace que la animación se quede en el último estado de forma permanente.
+
+IMPORTANTE: dado que transition no funciona, al agregar y quitar clases si se quiere un resultado "suave" de entrada y salida, se deben crear 2 animaciones una para la entrada y otra para la salida que inicia desde el final de la primera animación.
+
+Si el objeto requiere otro estado inicial entonces se define una tercera clase que solo se usa una vez:
+
+.hide {
+  display: none;
+}
+
+.answer {
+  display: flex;
+  animation: hide-card .5s ease-in-out 0s 1 normal forwards;
+}
+
+
+.expand-answer {
+  display: flex;
+  animation: show-card .5s ease-in-out 0s 1 normal forwards;
+  transition: all .3s ease-in-out;
+  
+}
+
+
+Se puede definir de un inicio a un final:
+
+
+@keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+
+O mediante porcentajes:
+
+@keyframes hide-card {
+  
+  0% {
+    opacity: 1;
+    height: 7rem;
+    background-color: var(--color-base);
+    padding: .8rem;
+    color: var(--color-text);
+    text-align: start;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    width: 100%;
+  }
+
+  100% {
+    opacity: 0;
+    height: 0rem;
+    color: var(--color-background);
+    background-color: var(--color-background);
+  }
+
+}
+
+
+

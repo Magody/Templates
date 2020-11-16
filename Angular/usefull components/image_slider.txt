@@ -45,6 +45,14 @@ transform(urls: string[]): Array<Object> {
   
   
   
+ El click devuelve el indice de la imagen:
+ 
+ viewImage(index) {
+        this.photoClicked.emit(this.item.urls_imgs[index]);
+    }
+	
+	
+	
   
   
   

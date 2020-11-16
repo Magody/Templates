@@ -1,0 +1,35 @@
+overflow solo funciona con contenedores con altura fija o predeterminada.
+
+El contenido deben ser palabras separadas, no solo una maraña de caracteres
+
+
+Para overflow en X:
+
+  overflow-x: auto;
+  white-space: nowrap; // no suele ser necesario, es para que siga en la misma línea
+  
+  
+
+Pero si se extiende en X y se quiere hacer scrollbar vertical:
+  
+overflow-y: auto;
+white-space: normal; // puede usarse ambién pre-line, pre-wrap
+
+
+
+
+
+->nowrap
+Sequences of whitespace will collapse into a single whitespace. Text will never wrap to the next line. The text continues on the same line until a <br> tag is encountered
+
+->pre 	
+Whitespace is preserved by the browser. Text will only wrap on line breaks. Acts like the <pre> tag in HTML
+
+Aquí un enter normal, ocasiona un enter en HTML
+
+->pre-line 	
+Sequences of whitespace will collapse into a single whitespace. Text will wrap when necessary, and on line breaks 	
+->pre-wrap 	
+Whitespace is preserved by the browser. Text will wrap when necessary, and on line breaks 
+
+

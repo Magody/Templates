@@ -1,0 +1,4 @@
+<select #mySelect (change)='onOptionsSelected(mySelect.value)'>
+	<option> Español </option>
+	<option> English </option>
+</select>

@@ -1,0 +1,230 @@
+<nav class="navbar-web">
+
+    <div class="nav-left">
+        <a mat-button routerLink="/">
+            <img src="../assets/logo.png" alt="{{ (dictionary$ | async).alt_logo }}" />
+        </a>
+        <div class="nav-search-box">
+            <select>
+                <option> 1 </option>
+                <option> 2 </option>
+                <option> 3 </option>
+            </select>
+            <form autocomplete="on" [formGroup]="formGroupSearch" (ngSubmit)="search($event)">
+                <div class="container-input-search">
+                    <input type="text" placeholder="{{ (dictionary$ | async).string_search }}" formControlName="search" />
+                </div>
+                <div class="button-nav-search">
+
+                    <button class="button-truequito" type="submit">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        
+    </div>
+    <div class="nav-right">
+        <ul><li>
+                <select #mySelect (change)='onOptionsSelected(mySelect.value)' value="{{my_select_value}}">
+                    <option value="0"> Español </option>
+                    <option value="1"> English </option>
+                </select>
+            </li>
+            <li>
+                <a class="nav-link label-mat-icon" routerLink="/trueque/explore" >
+                    <mat-icon>explore</mat-icon>
+                    <div> {{ (dictionary$ | async).string_explore }} </div>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" routerLink="/FAQ" >
+                    <mat-icon>help_outline</mat-icon>
+                </a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="logged_in$ | async">
+                <a class="nav-link dropdown-toggle"  id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                [matBadge]="99" matBadgeColor="warn">
+                    <mat-icon>notifications</mat-icon>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">MOCK1</a>
+                    <a class="dropdown-item" href="#">MOCK2</a>
+                    <a class="dropdown-item" href="#">MOCK3</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" *ngIf="logged_in$ | async">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" 
+                role="button" data-toggle="dropdown" 
+                aria-haspopup="true" aria-expanded="false"
+                [matBadge]="99" matBadgeColor="warn">
+                    <mat-icon>message</mat-icon>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">MOCK1</a>
+                    <a class="dropdown-item" href="#">MOCK2</a>
+                    <a class="dropdown-item" href="#">MOCK3</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" *ngIf="logged_in$ | async">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" 
+                role="button" data-toggle="dropdown" 
+                aria-haspopup="true" aria-expanded="false"
+                >
+                    <mat-icon>account_circle</mat-icon>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" (click)="logOut()">Log out</a>
+                </div>
+            </li>
+
+
+
+            <li *ngIf="!(logged_in$ | async)">
+                <button class="button-truequito button-show-login" (click)="showLoginForm()">
+                    <mat-icon>account_circle</mat-icon>
+                    Login
+                </button>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+
+<nav class="navbar-mobile">
+    <ul>
+        <li>
+            <a routerLink="/home" routerLinkActive="active">
+                <mat-icon>home</mat-icon>
+            </a>
+        </li>
+        <li *ngIf="logged_in$ | async">
+            <a [matBadge]="99" matBadgeColor="warn">
+                <mat-icon>notifications</mat-icon>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/trueque/explore">
+                <mat-icon>explore</mat-icon>
+            </a>
+        </li>
+        <li *ngIf="logged_in$ | async">
+            <a [matBadge]="99" matBadgeColor="warn">
+                <mat-icon>message</mat-icon>
+            </a>
+        </li>
+        <li *ngIf="logged_in$ | async">
+            <a routerLink="/account/me">
+                <mat-icon>account_circle</mat-icon>
+            </a>
+        </li>
+
+        <li *ngIf="!(logged_in$ | async)">
+            <button class="button-truequito button-show-login" (click)="showLoginForm()">
+                <mat-icon>account_circle</mat-icon>
+                {{ (dictionary$ | async).text_login }}
+            </button>
+        </li>
+		
+		<li #sideBarMenu>
+            <a class="nav-link"  (click)="showSideBar(sideBar, sideBarMenu)">
+                <mat-icon>menu</mat-icon>
+            </a>
+        </li>
+        
+
+        
+    </ul>		
+</nav>
+
+<div *ngIf="show_login_form" class="container-login-form">
+
+    <div class="form-title"> {{ (dictionary$ | async).text_form_register }} </div>
+    <form autocomplete="on" [formGroup]="formGroupLogin" (ngSubmit)="login($event)">
+        <input type="text" placeholder="username" formControlName="username"/>
+        <input type="password" placeholder="password" formControlName="password"/>
+
+        <div class="container-create-account"> 
+            {{ (dictionary$ | async).text_with_out_account }}
+
+            <a routerLink="/account/register">
+                {{ (dictionary$ | async).string_sign_up }}
+            </a>            
+            
+            
+        </div>
+
+        <button class="button-truequito" type="submit">
+            {{ (dictionary$ | async).text_login }}
+        </button>
+
+    </form>
+
+    
+
+</div>
+
+
+<nav class="sidebarmenu" #sideBar>
+    <ul class="menu">
+        <li>
+            <select #mySelect (change)='onOptionsSelected(mySelect.value)' value="{{my_select_value}}">
+                <option value="0"> Español </option>
+                <option value="1"> English </option>
+            </select>
+        </li>
+        <li>
+            <a class="nav-link" routerLink="/home" >
+                <div> {{ (dictionary$ | async).string_home }} </div>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" routerLink="/services" >
+                <div> {{ (dictionary$ | async).string_services }} </div>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" routerLink="/blog" >
+                <div> {{ (dictionary$ | async).string_blog }} </div>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" routerLink="/contact" >
+                <div> {{ (dictionary$ | async).string_contact }} </div>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" routerLink="/FAQ" >
+                <mat-icon>help_outline</mat-icon>
+            </a>
+        </li>
+        
+        
+    </ul>
+    <ul class="social-links">
+        <li>
+            <a class="nav-link" href="{{ (dictionary$ | async).brand_link_facebook }}" target="_blank" >
+                <svg class="facebook" viewBox="0 0 448 512"><path d="M448 56.7v398.5c0 13.7-11.1 24.7-24.7 24.7H309.1V306.5h58.2l8.7-67.6h-67v-43.2c0-19.6 5.4-32.9 33.5-32.9h35.8v-60.5c-6.2-.8-27.4-2.7-52.2-2.7-51.6.0-87 31.5-87 89.4v49.9h-58.4v67.6h58.4V480H24.7C11.1 480 0 468.9.0 455.3V56.7C0 43.1 11.1 32 24.7 32h398.5c13.7.0 24.8 11.1 24.8 24.7z"></path></svg>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="{{ (dictionary$ | async).brand_link_instagram }}" target="_blank" >
+                <svg class="instagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6.0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1.0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9.0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9.0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9.0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9.0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8.0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="{{ (dictionary$ | async).brand_link_youtube }}" target="_blank" >
+                <svg class="youtube" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4.652 0h1.44l.988 3.702.916-3.702h1.454l-1.665 5.505v3.757h-1.431v-3.757l-1.702-5.505zm6.594 2.373c-1.119 0-1.861.74-1.861 1.835v3.349c0 1.204.629 1.831 1.861 1.831 1.022 0 1.826-.683 1.826-1.831v-3.349c0-1.069-.797-1.835-1.826-1.835zm.531 5.127c0 .372-.19.646-.532.646-.351 0-.554-.287-.554-.646v-3.179c0-.374.172-.651.529-.651.39 0 .557.269.557.651v3.179zm4.729-5.07v5.186c-.155.194-.5.512-.747.512-.271 0-.338-.186-.338-.46v-5.238h-1.27v5.71c0 .675.206 1.22.887 1.22.384 0 .918-.2 1.468-.853v.754h1.27v-6.831h-1.27zm2.203 13.858c-.448 0-.541.315-.541.763v.659h1.069v-.66c.001-.44-.092-.762-.528-.762zm-4.703.04c-.084.043-.167.109-.25.198v4.055c.099.106.194.182.287.229.197.1.485.107.619-.067.07-.092.105-.241.105-.449v-3.359c0-.22-.043-.386-.129-.5-.147-.193-.42-.214-.632-.107zm4.827-5.195c-2.604-.177-11.066-.177-13.666 0-2.814.192-3.146 1.892-3.167 6.367.021 4.467.35 6.175 3.167 6.367 2.6.177 11.062.177 13.666 0 2.814-.192 3.146-1.893 3.167-6.367-.021-4.467-.35-6.175-3.167-6.367zm-12.324 10.686h-1.363v-7.54h-1.41v-1.28h4.182v1.28h-1.41v7.54zm4.846 0h-1.21v-.718c-.223.265-.455.467-.696.605-.652.374-1.547.365-1.547-.955v-5.438h1.209v4.988c0 .262.063.438.322.438.236 0 .564-.303.711-.487v-4.939h1.21v6.506zm4.657-1.348c0 .805-.301 1.431-1.106 1.431-.443 0-.812-.162-1.149-.583v.5h-1.221v-8.82h1.221v2.84c.273-.333.644-.608 1.076-.608.886 0 1.18.749 1.18 1.631v3.609zm4.471-1.752h-2.314v1.228c0 .488.042.91.528.91.511 0 .541-.344.541-.91v-.452h1.245v.489c0 1.253-.538 2.013-1.813 2.013-1.155 0-1.746-.842-1.746-2.013v-2.921c0-1.129.746-1.914 1.837-1.914 1.161 0 1.721.738 1.721 1.914v1.656z"/></svg>
+            </a>
+        </li>
+
+    </ul>
+</nav>
+
+
+<div class="mobile-header">
+    <a mat-button routerLink="/">
+        <img style="width: 4rem; height: 4rem;" src="../assets/logo_akiga_conecta_responsive.png" alt="{{ (dictionary$ | async).alt_logo }}" />
+    </a>
+</div>

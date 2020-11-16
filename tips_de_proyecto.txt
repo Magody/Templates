@@ -1,0 +1,33 @@
+
+
+Etapas de desarrollo: 
+Requerimientos > US > diseño DB > Prototipo en figma (incluye mobile) > programación de interfaces navegables con mock de datos > backend
+
+Empezar a programar las bases escalables:
+->Diccionario (assets/languages/es/strings_es.ts, assets/languages/en/strins_en.ts)... Con una interface Base string para que todos los idiomas tengan todos los términos
+->Variables parámetros en CSS
+->Parámetros internos de la aplicación
+->Dark mode
+->Navbar web, mobile
+->A/B testing preparar el terreno en donde se necesitará
+
+Optimizaciones: 
+->angular universal
+->pwa
+
+Se añaden progresivamente
+
+
+Abrir el entorno: 3 carpetas, 2 CMD en la carpeta clave, VS CODE, se puede reducir todo a un clic.
+El orden de las carpetas es: MAIN, Templates, Searcher
+
+Procurar que esta tarea sea automática, ejemplo en windows:
+
+%SystemRoot%\explorer.exe "C:\wamp64\www\akiga-conecta"
+%SystemRoot%\explorer.exe "C:\Users\COMPANY\Documents\Programacion\Templates"
+%SystemRoot%\explorer.exe "C:\Users\COMPANY\Documents\Programacion"
+cd C:\wamp64\www\akiga-conecta\frontend\angular-akiga-conecta
+start cmd /k echo Hello, World!1
+start cmd /k echo Hello, World!2
+"C:\Users\COMPANY\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+

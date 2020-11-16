@@ -1,0 +1,3 @@
+  cat.classList.add(this.getAttribute("data-add"))
+  cat.classList.remove(this.getAttribute("data-add"))
+  

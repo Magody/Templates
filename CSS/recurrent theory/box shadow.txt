@@ -1,0 +1,8 @@
+box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit;
+Blur: difuminación/ Spread: propagación-extensión
+
+Crea una sombra con iguales propiedades debajo del elemento
+
+box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+
+El offset es cuanto se va a mover la sombra idéntica debajo del objeto normal

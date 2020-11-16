@@ -1,0 +1,13 @@
+.content-router-outlet {
+    margin-top: var(--navbar-height);
+}
+
+@media screen and (max-width:  600px) {
+  
+    .content-router-outlet {
+      margin-top: 0;
+      margin-bottom: var(--navbar-mobile-height);
+    }
+
+}
+  
