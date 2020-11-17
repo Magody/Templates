@@ -1,8 +1,8 @@
 import sys
 
 
-table = "item"
-sql_attributes_line = "id 	user_username 	place_id 	category_id 	condition_id 	status_id 	type_id 	title 	i_offer 	i_want 	publication_datetime 	url_reference 	reference_value".split("\t")
+table = "TABLA AQUI"
+sql_attributes_line = "id 	name 	email 	contact_category_id 	datetime 	message ".split("\t")
 
 php_attributes_output = ""
 php_constructor_output = "\npublic function __construct("

@@ -1,0 +1,3 @@
+Verificar que la dirección url de la API es accesible, si está erronea se confunde con este error.
+Ubicar el .htaccess en la carpeta root
+configurar con una librería el CORS (Node JS)

@@ -1,0 +1,31 @@
+
+
+The base tag
+The HTML <base href="..."/> specifies a base path for resolving relative URLs to assets such as images, scripts, and style sheets. For example, given the <base href="/my/app/">, the browser resolves a URL such as some/place/foo.jpg into a server request for my/app/some/place/foo.jpg. During navigation, the Angular router uses the base href as the base path to component, template, and module files.
+
+
+
+
+
+APACHE (debe ser manual, no permite deploy automático a menos que se lo configure):
+
+ng build --prod
+
+Todo lo de "dist" se copia a la carpeta objetivo manualmente con cpanel o usando WinSCP, con una cuenta FTP. A la dirección ftp.<page>.com con el usuario y contraseña generado. Se usa encriptación implícita para el puerto 21
+
+.htaccess con:
+<IfModule mod_headers.c>
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+</IfModule>
+
+RewriteEngine On
+# If an existing asset or directory is requested go to it as it is
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
+
+# If the requested resource doesn't exist, use index.html
+RewriteRule ^ /index.html
+
+Permite que se enrute correctamente incluso fuera de la app

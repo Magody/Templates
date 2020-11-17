@@ -1,0 +1,27 @@
+private $id;
+private $name;
+private $email;
+private $contact_category_id;
+private $datetime;
+private $message;
+
+public function __construct($id, $name, $email, $contact_category_id, $datetime, $message){
+	$this->id = $id;
+	$this->name = $name;
+	$this->email = $email;
+	$this->contact_category_id = $contact_category_id;
+	$this->datetime = $datetime;
+	$this->message = $message;
+}
+
+INSERT INTO item(name, email, contact_category_id, datetime, message) VALUES(:name, :email, :contact_category_id, :datetime, :message)
+UPDATE item SET name=:name, email=:email, contact_category_id=:contact_category_id, datetime=:datetime, message=:message WHERE id=:id
+
+$success = $stmt->execute(array(
+	":name" => $this->name,
+	":email" => $this->email,
+	":contact_category_id" => $this->contact_category_id,
+	":datetime" => $this->datetime,
+	":message" => $this->message,
+	":id" => $this->id
+	));
